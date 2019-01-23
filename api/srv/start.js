@@ -20,7 +20,7 @@ var server = new Hapi.Server({
 	}
 });
 
-let HOST = 'demo-api.3scalegateway.svc';
+let HOST = '0.0.0.0';
 let PORT = process.env.API_SERVICE_PORT || 8080;
 
 server.connection({
@@ -31,8 +31,7 @@ server.connection({
 		cors: {
 			origin: ['*'],
 			headers: ["Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-language", "Origin"],
-			additionalHeaders: ['cache-control', 'x-requested-with', 'options'],
-			exposedHeaders: ["Authorization"]
+			additionalHeaders: ['cache-control', 'x-requested-with', 'options']
 		}
 	}
 });
