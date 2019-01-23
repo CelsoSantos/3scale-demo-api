@@ -20,8 +20,8 @@ var server = new Hapi.Server({
 	}
 });
 
-let HOST = '0.0.0.0';
-let PORT = process.env.API_SERVICE_PORT || 443;
+let HOST = 'demo-api.3scalegateway.svc';
+let PORT = process.env.API_SERVICE_PORT || 8080;
 
 server.connection({
 	labels: 'https',
