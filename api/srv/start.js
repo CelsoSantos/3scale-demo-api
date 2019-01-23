@@ -20,7 +20,7 @@ var server = new Hapi.Server({
 	}
 });
 
-let HOST = '0.0.0.0';
+let HOST = '127.0.0.1';
 let PORT = process.env.API_SERVICE_PORT || 8080;
 
 server.connection({
