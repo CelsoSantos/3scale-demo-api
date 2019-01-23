@@ -4,7 +4,7 @@
 			"script": "./api/srv/start.js",
 			"watch": false,
 			"env": {
-				"API_SERVICE_PORT": 8442,
+				"API_SERVICE_PORT": 8443,
 				"FB_PASSWD": "PBYOYSDKAA6QLBULM3TKM25G3VWKZE9I",
 				"FB_CLIENT_ID": "493482840803329",
 				"FB_CLIENT_SECRET": "b95ade2aeb3760b48bcf2e1bb002f3b3",
@@ -34,6 +34,9 @@
 			"name": "brands",
 			"script": "./services/brands/srv/start.js",
 			"watch": false,
+			"env": {
+				"BRANDS_SERVICE_PORT": 8082
+			},
 			"error_file": "./logs/pm2-brands.log",
 			"out_file": "./logs/pm2-brands-out.log"
 		},
@@ -41,6 +44,9 @@
 			"name": "users",
 			"script": "./services/users/srv/start.js",
 			"watch": false,
+			"env": {
+				"USERS_SERVICE_PORT": 8081
+			},
 			"error_file": "./logs/pm2-users.log",
 			"out_file": "./logs/pm2-users-out.log"
 		}

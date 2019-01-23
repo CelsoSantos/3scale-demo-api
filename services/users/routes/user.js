@@ -2,8 +2,8 @@
 
 const Promise = require("bluebird");
 const Request = require("request-promise");
-const glob = require("glob");
-const fs = require("fs");
+const glob = require("glob-promise");
+const fs = Promise.promisifyAll(require('fs'));
 
 //FIXME: Move regexes to Util module.
 // Create Regex class with all the required regexes
@@ -13,41 +13,40 @@ function validateEmailRegex(email) {
 	return email.search(regex) > -1;
 }
 
-function getUsers(request, reply) {
-
-	let users = [];
-
-	glob("json/*.json", function (err, files) {
-		if (err) {
-			console.log("cannot read the folder, something goes wrong with glob", err);
-		}
-		files.forEach(function (file) {
-			fs.readFile(file, 'utf8', function (err, data) { // Read each file
-				if (err) {
-					console.log("cannot read the file, something goes wrong with the file", err);
-				}
-
-				var obj = JSON.parse(data);
-				users.push(obj);
-			});
-		});
-	}).then(() => {
-		return users;
+function readFile(path) {
+	let parseAsync = Promise.method(JSON.parse);
+	return fs.readFileAsync(path, 'utf8').then((result) => {
+		return parseAsync(result);
 	})
+}
 
+function getAll(files) {
+	let promises = [];
 
-	// User.getById(userId).then((user) => {
-	// 	return {
-	// 		ok: true,
-	// 		result: user.submissionCounters
-	// 	}
-	// }).catch((error) => {
-	// 	console.error("getSubmissionsCounter error: " + error.message);
-	// 	return {
-	// 		ok: false,
-	// 		message: error.message
-	// 	}
-	// }).asCallback(reply);
+	files.forEach((file) => {
+		promises.push(readFile(file));
+	});
+	return Promise.all(promises);
+}
+
+function getUsers(request, reply) {
+	return new Promise((resolve, reject) => {
+		let users = [];
+		glob(__dirname + "/json/*.json").then((files) => {
+			return getAll(files);
+		}).then((data) => {
+			return resolve({
+				ok: true,
+				result: data
+			});
+			// return users.push(data);
+		}).catch((error) => {
+			if (error) {
+				console.log("cannot read the folder, something goes wrong with glob", error);
+				return reject(error);
+			}
+		})
+	}).asCallback(reply)
 }
 
 module.exports = [{

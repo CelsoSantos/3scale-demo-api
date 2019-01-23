@@ -4,7 +4,7 @@ var ServiceRoutes = require("../routes/index");
 
 const server = new Hapi.Server();
 
-var PORT = process.env.USERS_SERVICE_PORT || 8080;
+var PORT = process.env.USERS_SERVICE_PORT || 8081;
 var HOST = '0.0.0.0';
 
 server.connection({
