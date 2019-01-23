@@ -24,7 +24,7 @@ let HOST = '127.0.0.1';
 let PORT = process.env.API_SERVICE_PORT || 8080;
 
 server.connection({
-	labels: 'https',
+	labels: 'http',
 	port: PORT,
 	host: HOST,
 	routes: {
@@ -65,5 +65,5 @@ server.start((err) => {
 		process.exit(1);
 	}
 
-	console.log('HTTPS Server started at:', server.info.uri);
+	console.log('HTTP Server started at:', server.info.uri);
 });
