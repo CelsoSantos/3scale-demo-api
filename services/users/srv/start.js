@@ -5,7 +5,7 @@ var ServiceRoutes = require("../routes/index");
 const server = new Hapi.Server();
 
 var PORT = process.env.USERS_SERVICE_PORT || 8080;
-var HOST = '127.0.0.1';
+var HOST = '0.0.0.0';
 
 server.connection({
 	port: PORT,

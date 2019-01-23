@@ -8,7 +8,7 @@ module.exports = [{
 	},
 	handler: (request, reply) => {
 		reply({
-			text: 'Token not required'
+			text: 'Hello! Welcome to 3scale API Gateway Demo by Syone'
 		});
 	}
 }];

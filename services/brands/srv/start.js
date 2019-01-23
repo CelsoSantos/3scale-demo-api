@@ -7,7 +7,7 @@ var ServiceRoutes = require("../routes/index");
 const server = new Hapi.Server();
 
 let PORT = process.env.BRANDS_SERVICE_PORT || 8080;
-let HOST = '127.0.0.1';
+let HOST = '0.0.0.0';
 
 server.connection({
 	port: PORT,
