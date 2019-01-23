@@ -1,0 +1,25 @@
+{
+	"name": "demo-brands",
+	"version": "1.0.0-rc.1",
+	"description": "Demo Microservices",
+	"private": true,
+	"main": "./srv/start.js",
+	"scripts": {
+		"start": "node srv/start.js",
+		"lint": "lab test-dL",
+		"test": "echo 'No test'"
+	},
+	"dependencies": {
+		"bluebird": "3.4.7",
+		"hapi": "15.2.0",
+		"joi": "9.2.0",
+		"lodash": "4.17.4",
+		"moment": "^2.15.0",
+		"money": "^0.2.0",
+		"numeral": "^2.0.6",
+		"pdfkit": "^0.8.3",
+		"request": "2.81.0",
+		"request-promise": "4.2.1",
+		"glob": "7.1.3"
+	}
+}

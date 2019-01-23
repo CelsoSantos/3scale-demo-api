@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite the default settings
+{
+	"editor.detectIndentation": false,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.lineNumbers": "on",
+	"editor.formatOnSave": true,
+	"update.channel": "default",
+	"javascript.validate.enable": true,
+	"javascript.format.insertSpaceAfterCommaDelimiter": true,
+	"javascript.commonjs.resolve.languages": [
+		"javascript",
+		"typescript"
+	],
+	"javascript.commonjs.resolve.extensions": [
+		".js"
+	],
+	"editor.autoClosingBrackets": true,
+	"editor.cursorBlinking": "smooth",
+	"editor.scrollBeyondLastLine": false,
+	"eslint.enable": true,
+	"eslint.run": "onSave"
+}

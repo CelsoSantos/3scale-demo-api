@@ -1,0 +1,21 @@
+{
+	"name": "demo-users",
+	"version": "1.0.0-rc.1",
+	"description": "Demo Microservices",
+	"private": true,
+	"main": "./srv/start.js",
+	"scripts": {
+		"start": "node srv/start.js",
+		"lint": "lab test-dL",
+		"test": "echo 'No tests'"
+	},
+	"dependencies": {
+		"bluebird": "3.4.7",
+		"hapi": "15.2.0",
+		"request": "2.81.0",
+		"request-promise": "4.2.1",
+		"hapi-cors-headers": "^1.0.0",
+		"json2csv": "^3.7.1",
+		"glob": "7.1.3"
+	}
+}

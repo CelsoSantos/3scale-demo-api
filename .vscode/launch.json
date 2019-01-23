@@ -1,0 +1,112 @@
+{
+	"version": "0.2.0",
+	"configurations": [{
+			"name": "API",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/api/srv/start.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"API_SERVICE_PORT": 8442,
+				"FB_PASSWD": "PBYOYSDKAA6QLBULM3TKM25G3VWKZE9I",
+				"FB_CLIENT_ID": "493482840803329",
+				"FB_CLIENT_SECRET": "b95ade2aeb3760b48bcf2e1bb002f3b3",
+				"GOOGLE_PASSWD": "SYU2FLQ4YCNHWOFMPWOWG68PWNZE34AY",
+				"GOOGLE_CLIENT_ID": "1026972869624-t1b6rc6f3r0a5kl26cmhgbau2ubak3aj.apps.googleusercontent.com",
+				"GOOGLE_CLIENT_SECRET": "_3qoJJiXQc0asdJxGJo93pgS",
+				"INSTA_PASSWD": "I9OZ89K7PEEPOS7050OSWIY9N65E105U",
+				"INSTA_CLIENT_ID": "0ea21f7c2ec24fff865d9818ec223720",
+				"INSTA_CLIENT_SECRET": "9826d373522a49599748a7c8b6608be7",
+				"JWT_SECRET": "CELA4NM330WCF1JZ1TT9JHMQGGJZUI7T",
+				"PIN_PASSWD": "G64GL6P47PHAWGEN1UMAWIZZQEDKVAPJ",
+				"PIN_CLIENT_ID": "4865269521818072728",
+				"PIN_CLIENT_SECRET": "667c69d13fedf2d11ccfa349ba2f50e336fec575f7551f46ecfa6fb283df6547",
+				"TUM_PASSWD": "RQ7NVVK5JN71T2GJM153WAY4X0DKKQFX",
+				"TUM_CLIENT_ID": "8hd5OZgQnUgBnll1lBp91crTTsm8Hw4fRRGcsr67c9wGQIx0Hz",
+				"TUM_CLIENT_SECRET": "FzYBpujsqb2jneodbgawAWb4K0wECNUGrLLq9w4G8nQryMCdhI",
+				"TW_PASSWD": "8WN7ILEUWFIUG3RS9TUFEGJBOWPTY6YS",
+				"TW_CLIENT_ID": "CM32CJO5buwdzpsSn69uNlsjs",
+				"TW_CLIENT_SECRET": "mxAFPxOd3Sl1Xtx7QjW4yA4tEde21LdPtbbjZRMebFJnb1cqDz",
+				"APP_HOST_NAME": "https://local.brandbassador.com",
+				"AUTH_KEY": "I=,fNjo/jat4LhJ",
+				"NODE_ENV": "development"
+			},
+			"console": "internalConsole",
+			"sourceMaps": false,
+			"outFiles": []
+		},
+		{
+			"name": "Brands",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/services/brands/srv/start.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development",
+				"DATABASE_SERVICE_HOST": "10.1.40.123",
+				"BUCKET": "brandbassador_dev",
+				"CUSTOM_KEY": "NZK0cdtWDQ"
+			},
+			"console": "internalConsole",
+			"sourceMaps": false,
+			"outFiles": []
+		},
+		{
+			"name": "Users",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/services/users/srv/start.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development",
+				"DATABASE_SERVICE_HOST": "10.1.40.123",
+				"BUCKET": "brandbassador_dev"
+			},
+			"console": "internalConsole",
+			"sourceMaps": false,
+			"outFiles": []
+		},
+		{
+			"name": "Attach",
+			"type": "node",
+			"request": "attach",
+			"port": 5858,
+			"address": "localhost",
+			"restart": false,
+			"sourceMaps": false,
+			"outFiles": [],
+			"localRoot": "${workspaceRoot}",
+			"remoteRoot": null
+		},
+		{
+			"name": "Attach to Process",
+			"type": "node",
+			"request": "attach",
+			"processId": "${command:PickProcess}",
+			"port": 5858,
+			"sourceMaps": false,
+			"outFiles": []
+		}
+	]
+}

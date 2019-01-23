@@ -1,0 +1,1 @@
+module.exports = { reply_script: "<script>window.opener.postMessage(`{0}`, `*`);window.close();</script>" }
