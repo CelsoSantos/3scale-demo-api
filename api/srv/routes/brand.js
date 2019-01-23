@@ -7,9 +7,6 @@ const errorUtils = require("../errorUtils");
 const handleRequestError = errorUtils.handleRequestError;
 const handleBadRequest = errorUtils.handleBadRequest;
 
-const BRANDS_HOST = process.env.BRANDS_SERVICE_HOST || "0.0.0.0";
-const BRANDS_PORT = process.env.BRANDS_SERVICE_PORT || 8082;
-
 module.exports = [{
 	method: 'GET',
 	path: '/brands/{path}',
@@ -20,7 +17,8 @@ module.exports = [{
 
 			let options = {
 				method: "GET",
-				uri: "http://" + BRANDS_HOST + ":" + BRANDS_PORT + "/brands/" + path,
+				uri: "http://" + "demo-brands.3scalegateway.svc" + "/brands/" + path,
+				// uri: "http://" + BRANDS_HOST + ":" + BRANDS_PORT + "/brands/" + path,
 				body: request.payload,
 				json: true
 			}

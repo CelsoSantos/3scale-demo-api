@@ -6,9 +6,6 @@ const Request = require("request-promise");
 const errorUtils = require("../errorUtils");
 const handleRequestError = errorUtils.handleRequestError;
 
-const USERS_HOST = process.env.USERS_SERVICE_HOST || "0.0.0.0";
-const USERS_PORT = process.env.USERS_SERVICE_PORT || "8088";
-
 module.exports = [{
 	method: 'GET',
 	path: '/users/{path}',
@@ -19,7 +16,8 @@ module.exports = [{
 
 			let options = {
 				method: "GET",
-				uri: "http://" + USERS_HOST + ":" + USERS_PORT + "/users/" + path,
+				uri: "http://" + "demo-users.3scalegateway.svc" + "/users/" + path,
+				// uri: "http://" + USERS_HOST + ":" + USERS_PORT + "/users/" + path,
 				body: request.payload,
 				json: true
 			}
