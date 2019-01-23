@@ -7,7 +7,7 @@ const errorUtils = require("../errorUtils");
 const handleRequestError = errorUtils.handleRequestError;
 
 const USERS_HOST = "demo-users.3scalegateway.svc"
-const USERS_PORT = 8081
+const USERS_PORT = 8080
 
 module.exports = [{
 	method: 'GET',
