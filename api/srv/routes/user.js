@@ -7,7 +7,7 @@ const errorUtils = require("../errorUtils");
 const handleRequestError = errorUtils.handleRequestError;
 
 const USERS_HOST = "demo-users.3scalegateway.svc"
-// const USERS_PORT = 8081
+const USERS_PORT = 8081
 
 module.exports = [{
 	method: 'GET',
@@ -19,8 +19,7 @@ module.exports = [{
 
 			let options = {
 				method: "GET",
-				// uri: "http://" + USERS_HOST + ":" + USERS_PORT + "/users/" + path,
-				uri: "http://" + USERS_HOST + "/users/" + path,
+				uri: "http://" + USERS_HOST + ":" + USERS_PORT + "/users/" + path,
 				body: request.payload,
 				json: true
 			}
