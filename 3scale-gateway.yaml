@@ -1,0 +1,2992 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T15:59:12Z
+    labels:
+      app: demo-api
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16262972"
+    selfLink: /oapi/v1/namespaces/3scalegateway/buildconfigs/demo-api
+    uid: d3bbc5b2-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: demo-api:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: /api
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs:10
+          namespace: openshift
+      type: Source
+    triggers:
+    - generic:
+        secret: 15215e257fff059b
+      type: Generic
+    - github:
+        secret: b42b4078715809cf
+      type: GitHub
+    - imageChange:
+        lastTriggeredImageID: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    lastVersion: 1
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:40Z
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263429"
+    selfLink: /oapi/v1/namespaces/3scalegateway/buildconfigs/demo-brands
+    uid: 084c3400-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: demo-brands:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: /services/brands
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs:10
+          namespace: openshift
+      type: Source
+    triggers:
+    - generic:
+        secret: 8c9673baaffbb0ed
+      type: Generic
+    - github:
+        secret: 8ac7dea4b6250467
+      type: GitHub
+    - imageChange:
+        lastTriggeredImageID: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    lastVersion: 1
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16263218"
+    selfLink: /oapi/v1/namespaces/3scalegateway/buildconfigs/demo-users
+    uid: f14ca0a8-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: demo-users:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: /services/users
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs:10
+          namespace: openshift
+      type: Source
+    triggers:
+    - generic:
+        secret: 6474343a6311b8b7
+      type: Generic
+    - github:
+        secret: 989f975f249dadf9
+      type: GitHub
+    - imageChange:
+        lastTriggeredImageID: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    lastVersion: 1
+- apiVersion: v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: demo-api
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: demo-api-1-build
+    creationTimestamp: 2019-01-23T15:59:13Z
+    labels:
+      app: demo-api
+      buildconfig: demo-api
+      openshift.io/build-config.name: demo-api
+      openshift.io/build.start-policy: Serial
+    name: demo-api-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: demo-api
+      uid: d3bbc5b2-1f27-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16263081"
+    selfLink: /oapi/v1/namespaces/3scalegateway/builds/demo-api-1
+    uid: d3f0dd6e-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-8clr7
+      to:
+        kind: ImageStreamTag
+        name: demo-api:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        commit: 7eccd049182e7a01f9a31092754cfb1db2830396
+        committer:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        message: Fix users port typo
+      type: Git
+    serviceAccount: builder
+    source:
+      contextDir: /api
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+        pullSecret:
+          name: builder-dockercfg-8clr7
+      type: Source
+    triggeredBy:
+    - imageChangeBuild:
+        fromRef:
+          kind: ImageStreamTag
+          name: nodejs:10
+          namespace: openshift
+        imageID: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+      message: Image change
+  status:
+    completionTimestamp: 2019-01-23T15:59:32Z
+    config:
+      kind: BuildConfig
+      name: demo-api
+      namespace: 3scalegateway
+    duration: 19000000000
+    output:
+      to:
+        imageDigest: sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+    outputDockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-api:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 2148
+      name: FetchInputs
+      startTime: 2019-01-23T15:59:16Z
+      steps:
+      - durationMilliseconds: 2148
+        name: FetchGitSource
+        startTime: 2019-01-23T15:59:16Z
+    - durationMilliseconds: 1149
+      name: CommitContainer
+      startTime: 2019-01-23T15:59:27Z
+      steps:
+      - durationMilliseconds: 1149
+        name: CommitContainer
+        startTime: 2019-01-23T15:59:27Z
+    - durationMilliseconds: 7615
+      name: Assemble
+      startTime: 2019-01-23T15:59:21Z
+      steps:
+      - durationMilliseconds: 7615
+        name: AssembleBuildScripts
+        startTime: 2019-01-23T15:59:21Z
+    - durationMilliseconds: 3240
+      name: PushImage
+      startTime: 2019-01-23T15:59:29Z
+      steps:
+      - durationMilliseconds: 3240
+        name: PushImage
+        startTime: 2019-01-23T15:59:29Z
+    startTimestamp: 2019-01-23T15:59:13Z
+- apiVersion: v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: demo-brands
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: demo-brands-1-build
+    creationTimestamp: 2019-01-23T16:00:41Z
+    labels:
+      app: demo-brands
+      buildconfig: demo-brands
+      openshift.io/build-config.name: demo-brands
+      openshift.io/build.start-policy: Serial
+    name: demo-brands-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: demo-brands
+      uid: 084c3400-1f28-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16263544"
+    selfLink: /oapi/v1/namespaces/3scalegateway/builds/demo-brands-1
+    uid: 08765ef0-1f28-11e9-9f6b-000d3ab5dd95
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-8clr7
+      to:
+        kind: ImageStreamTag
+        name: demo-brands:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        commit: 7eccd049182e7a01f9a31092754cfb1db2830396
+        committer:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        message: Fix users port typo
+      type: Git
+    serviceAccount: builder
+    source:
+      contextDir: /services/brands
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+        pullSecret:
+          name: builder-dockercfg-8clr7
+      type: Source
+    triggeredBy:
+    - message: Build configuration change
+  status:
+    completionTimestamp: 2019-01-23T16:01:06Z
+    config:
+      kind: BuildConfig
+      name: demo-brands
+      namespace: 3scalegateway
+    duration: 25000000000
+    output:
+      to:
+        imageDigest: sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+    outputDockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-brands:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 2559
+      name: FetchInputs
+      startTime: 2019-01-23T16:00:45Z
+      steps:
+      - durationMilliseconds: 2559
+        name: FetchGitSource
+        startTime: 2019-01-23T16:00:45Z
+    - durationMilliseconds: 2532
+      name: CommitContainer
+      startTime: 2019-01-23T16:00:58Z
+      steps:
+      - durationMilliseconds: 2532
+        name: CommitContainer
+        startTime: 2019-01-23T16:00:58Z
+    - durationMilliseconds: 10965
+      name: Assemble
+      startTime: 2019-01-23T16:00:50Z
+      steps:
+      - durationMilliseconds: 10965
+        name: AssembleBuildScripts
+        startTime: 2019-01-23T16:00:50Z
+    - durationMilliseconds: 4353
+      name: PushImage
+      startTime: 2019-01-23T16:01:01Z
+      steps:
+      - durationMilliseconds: 4353
+        name: PushImage
+        startTime: 2019-01-23T16:01:01Z
+    startTimestamp: 2019-01-23T16:00:41Z
+- apiVersion: v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: demo-users
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: demo-users-1-build
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      app: demo-users
+      buildconfig: demo-users
+      openshift.io/build-config.name: demo-users
+      openshift.io/build.start-policy: Serial
+    name: demo-users-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: demo-users
+      uid: f14ca0a8-1f27-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16263332"
+    selfLink: /oapi/v1/namespaces/3scalegateway/builds/demo-users-1
+    uid: f16f2b62-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-8clr7
+      to:
+        kind: ImageStreamTag
+        name: demo-users:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        commit: 7eccd049182e7a01f9a31092754cfb1db2830396
+        committer:
+          email: zedblade.santos@gmail.com
+          name: Celso Bem dos Santos
+        message: Fix users port typo
+      type: Git
+    serviceAccount: builder
+    source:
+      contextDir: /services/users
+      git:
+        ref: master
+        uri: https://github.com/CelsoSantos/3scale-demo-api.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d
+        pullSecret:
+          name: builder-dockercfg-8clr7
+      type: Source
+    triggeredBy:
+    - message: Build configuration change
+  status:
+    completionTimestamp: 2019-01-23T16:00:27Z
+    config:
+      kind: BuildConfig
+      name: demo-users
+      namespace: 3scalegateway
+    duration: 25000000000
+    output:
+      to:
+        imageDigest: sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+    outputDockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-users:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 5412
+      name: FetchInputs
+      startTime: 2019-01-23T16:00:08Z
+      steps:
+      - durationMilliseconds: 5412
+        name: FetchGitSource
+        startTime: 2019-01-23T16:00:08Z
+    - durationMilliseconds: 1000
+      name: CommitContainer
+      startTime: 2019-01-23T16:00:22Z
+      steps:
+      - durationMilliseconds: 1000
+        name: CommitContainer
+        startTime: 2019-01-23T16:00:22Z
+    - durationMilliseconds: 7244
+      name: Assemble
+      startTime: 2019-01-23T16:00:16Z
+      steps:
+      - durationMilliseconds: 7244
+        name: AssembleBuildScripts
+        startTime: 2019-01-23T16:00:16Z
+    - durationMilliseconds: 2671
+      name: PushImage
+      startTime: 2019-01-23T16:00:23Z
+      steps:
+      - durationMilliseconds: 2671
+        name: PushImage
+        startTime: 2019-01-23T16:00:23Z
+    startTimestamp: 2019-01-23T16:00:02Z
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T15:59:12Z
+    generation: 1
+    labels:
+      app: demo-api
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16263065"
+    selfLink: /oapi/v1/namespaces/3scalegateway/imagestreams/demo-api
+    uid: d3ba5f75-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: docker-registry.default.svc:5000/3scalegateway/demo-api
+    tags:
+    - items:
+      - created: 2019-01-23T15:59:32Z
+        dockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+        generation: 1
+        image: sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+      tag: latest
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:40Z
+    generation: 1
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263527"
+    selfLink: /oapi/v1/namespaces/3scalegateway/imagestreams/demo-brands
+    uid: 0849000d-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: docker-registry.default.svc:5000/3scalegateway/demo-brands
+    tags:
+    - items:
+      - created: 2019-01-23T16:01:06Z
+        dockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+        generation: 1
+        image: sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+      tag: latest
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:02Z
+    generation: 1
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16263315"
+    selfLink: /oapi/v1/namespaces/3scalegateway/imagestreams/demo-users
+    uid: f14ab7a2-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: docker-registry.default.svc:5000/3scalegateway/demo-users
+    tags:
+    - items:
+      - created: 2019-01-23T16:00:26Z
+        dockerImageReference: docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+        generation: 1
+        image: sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+      tag: latest
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: 2019-01-23T16:20:17Z
+    generation: 1
+    labels:
+      app: 3scale-gateway
+    name: apicast
+    namespace: 3scalegateway
+    resourceVersion: "16267616"
+    selfLink: /oapi/v1/namespaces/3scalegateway/deploymentconfigs/apicast
+    uid: c5a2029e-1f2a-11e9-b8d3-000d3ab5d716
+  spec:
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: apicast
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: 3scale-gateway
+          deploymentconfig: apicast
+      spec:
+        containers:
+        - env:
+          - name: THREESCALE_PORTAL_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: apicast-configuration-url-secret
+          - name: THREESCALE_CONFIG_FILE
+          - name: THREESCALE_DEPLOYMENT_ENV
+            value: production
+          - name: RESOLVER
+          - name: APICAST_SERVICES_LIST
+          - name: APICAST_CONFIGURATION_LOADER
+            value: boot
+          - name: APICAST_LOG_LEVEL
+            value: warn
+          - name: APICAST_PATH_ROUTING
+            value: "false"
+          - name: APICAST_RESPONSE_CODES
+            value: "false"
+          - name: APICAST_CONFIGURATION_CACHE
+          - name: REDIS_URL
+          - name: APICAST_MANAGEMENT_API
+            value: status
+          - name: OPENSSL_VERIFY
+            value: "false"
+          - name: APICAST_REPORTING_THREADS
+            value: "0"
+          - name: APICAST_WORKERS
+          image: quay.io/3scale/apicast:master
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/live
+              port: management
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: apicast
+          ports:
+          - containerPort: 8080
+            name: proxy
+            protocol: TCP
+          - containerPort: 8090
+            name: management
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/ready
+              port: management
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+  status:
+    availableReplicas: 2
+    conditions:
+    - lastTransitionTime: 2019-01-23T16:20:47Z
+      lastUpdateTime: 2019-01-23T16:20:47Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: 2019-01-23T16:20:48Z
+      lastUpdateTime: 2019-01-23T16:20:48Z
+      message: replication controller "apicast-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 1
+    readyReplicas: 2
+    replicas: 2
+    unavailableReplicas: 0
+    updatedReplicas: 2
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T15:59:12Z
+    generation: 2
+    labels:
+      app: demo-api
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16263137"
+    selfLink: /oapi/v1/namespaces/3scalegateway/deploymentconfigs/demo-api
+    uid: d3bb1567-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: demo-api
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: demo-api
+          deploymentconfig: demo-api
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+          imagePullPolicy: Always
+          name: demo-api
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - demo-api
+        from:
+          kind: ImageStreamTag
+          name: demo-api:latest
+          namespace: 3scalegateway
+        lastTriggeredImage: docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: 2019-01-23T15:59:39Z
+      lastUpdateTime: 2019-01-23T15:59:39Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: 2019-01-23T15:59:40Z
+      lastUpdateTime: 2019-01-23T15:59:40Z
+      message: replication controller "demo-api-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:40Z
+    generation: 2
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263599"
+    selfLink: /oapi/v1/namespaces/3scalegateway/deploymentconfigs/demo-brands
+    uid: 084a67b0-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: demo-brands
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: demo-brands
+          deploymentconfig: demo-brands
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+          imagePullPolicy: Always
+          name: demo-brands
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - demo-brands
+        from:
+          kind: ImageStreamTag
+          name: demo-brands:latest
+          namespace: 3scalegateway
+        lastTriggeredImage: docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: 2019-01-23T16:01:12Z
+      lastUpdateTime: 2019-01-23T16:01:12Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: 2019-01-23T16:01:09Z
+      lastUpdateTime: 2019-01-23T16:01:13Z
+      message: replication controller "demo-brands-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:02Z
+    generation: 4
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16264691"
+    selfLink: /oapi/v1/namespaces/3scalegateway/deploymentconfigs/demo-users
+    uid: f14b7f8d-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: demo-users
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: demo-users
+          deploymentconfig: demo-users
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+          imagePullPolicy: Always
+          name: demo-users
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - demo-users
+        from:
+          kind: ImageStreamTag
+          name: demo-users:latest
+          namespace: 3scalegateway
+        lastTriggeredImage: docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: 2019-01-23T16:00:29Z
+      lastUpdateTime: 2019-01-23T16:00:33Z
+      message: replication controller "demo-users-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: 2019-01-23T16:01:37Z
+      lastUpdateTime: 2019-01-23T16:01:37Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: Route
+  metadata:
+    creationTimestamp: 2019-01-23T16:22:34Z
+    labels:
+      app: 3scale-gateway
+    name: apicast
+    namespace: 3scalegateway
+    resourceVersion: "16268466"
+    selfLink: /oapi/v1/namespaces/3scalegateway/routes/apicast
+    uid: 1773c808-1f2b-11e9-b8d3-000d3ab5d716
+  spec:
+    host: api-3scale-production.52.236.82.29.nip.io
+    port:
+      targetPort: proxy
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: apicast
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2019-01-23T16:22:34Z
+        status: "True"
+        type: Admitted
+      host: api-3scale-production.52.236.82.29.nip.io
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    creationTimestamp: 2019-01-23T16:02:07Z
+    labels:
+      app: 3scale-gateway
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16263926"
+    selfLink: /oapi/v1/namespaces/3scalegateway/routes/demo-api
+    uid: 3baff220-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    host: demo-api-3scalegateway.52.236.82.29.nip.io
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: demo-api
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2019-01-23T16:02:41Z
+        status: "True"
+        type: Admitted
+      host: demo-api-3scalegateway.52.236.82.29.nip.io
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+      openshift.io/host.generated: "true"
+    creationTimestamp: 2019-01-23T16:00:40Z
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263427"
+    selfLink: /oapi/v1/namespaces/3scalegateway/routes/demo-brands
+    uid: 084b7424-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    host: demo-brands-3scalegateway.52.236.82.29.nip.io
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: demo-brands
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2019-01-23T16:00:41Z
+        status: "True"
+        type: Admitted
+      host: demo-brands-3scalegateway.52.236.82.29.nip.io
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+      openshift.io/host.generated: "true"
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16263217"
+    selfLink: /oapi/v1/namespaces/3scalegateway/routes/demo-users
+    uid: f14cb632-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    host: demo-users-3scalegateway.52.236.82.29.nip.io
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: demo-users
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2019-01-23T16:00:02Z
+        status: "True"
+        type: Admitted
+      host: demo-users-3scalegateway.52.236.82.29.nip.io
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: apicast
+      openshift.io/deployment.name: apicast-1
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-01-23T16:20:20Z
+    generateName: apicast-1-
+    labels:
+      app: 3scale-gateway
+      deployment: apicast-1
+      deploymentconfig: apicast
+    name: apicast-1-mfg9b
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: apicast-1
+      uid: c5ac88ed-1f2a-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16267609"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/apicast-1-mfg9b
+    uid: c743aece-1f2a-11e9-996a-000d3ab5d4b3
+  spec:
+    containers:
+    - env:
+      - name: THREESCALE_PORTAL_ENDPOINT
+        valueFrom:
+          secretKeyRef:
+            key: password
+            name: apicast-configuration-url-secret
+      - name: THREESCALE_CONFIG_FILE
+      - name: THREESCALE_DEPLOYMENT_ENV
+        value: production
+      - name: RESOLVER
+      - name: APICAST_SERVICES_LIST
+      - name: APICAST_CONFIGURATION_LOADER
+        value: boot
+      - name: APICAST_LOG_LEVEL
+        value: warn
+      - name: APICAST_PATH_ROUTING
+        value: "false"
+      - name: APICAST_RESPONSE_CODES
+        value: "false"
+      - name: APICAST_CONFIGURATION_CACHE
+      - name: REDIS_URL
+      - name: APICAST_MANAGEMENT_API
+        value: status
+      - name: OPENSSL_VERIFY
+        value: "false"
+      - name: APICAST_REPORTING_THREADS
+        value: "0"
+      - name: APICAST_WORKERS
+      image: quay.io/3scale/apicast:master
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /status/live
+          port: management
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: apicast
+      ports:
+      - containerPort: 8080
+        name: proxy
+        protocol: TCP
+      - containerPort: 8090
+        name: management
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /status/ready
+          port: management
+          scheme: HTTP
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000180000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-96zzz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-swcqv
+    nodeName: ocpcluster-node-1
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000180000
+      seLinuxOptions:
+        level: s0:c13,c12
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - name: default-token-96zzz
+      secret:
+        defaultMode: 420
+        secretName: default-token-96zzz
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:20Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:47Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:20Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://c432634fd8623f6194cf003157732e5be3e98f9ee42c6e3961da5fc405b0967b
+      image: quay.io/3scale/apicast:master
+      imageID: docker-pullable://quay.io/3scale/apicast@sha256:7a580af9d82a97f30445bd70d93644fc1ed2b5695ac1376e447e1bcf14687c16
+      lastState: {}
+      name: apicast
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-01-23T16:20:27Z
+    hostIP: 10.3.0.5
+    phase: Running
+    podIP: 10.128.5.67
+    qosClass: BestEffort
+    startTime: 2019-01-23T16:20:20Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: apicast
+      openshift.io/deployment.name: apicast-1
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-01-23T16:20:20Z
+    generateName: apicast-1-
+    labels:
+      app: 3scale-gateway
+      deployment: apicast-1
+      deploymentconfig: apicast
+    name: apicast-1-s2jbz
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: apicast-1
+      uid: c5ac88ed-1f2a-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16267601"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/apicast-1-s2jbz
+    uid: c7485a68-1f2a-11e9-996a-000d3ab5d4b3
+  spec:
+    containers:
+    - env:
+      - name: THREESCALE_PORTAL_ENDPOINT
+        valueFrom:
+          secretKeyRef:
+            key: password
+            name: apicast-configuration-url-secret
+      - name: THREESCALE_CONFIG_FILE
+      - name: THREESCALE_DEPLOYMENT_ENV
+        value: production
+      - name: RESOLVER
+      - name: APICAST_SERVICES_LIST
+      - name: APICAST_CONFIGURATION_LOADER
+        value: boot
+      - name: APICAST_LOG_LEVEL
+        value: warn
+      - name: APICAST_PATH_ROUTING
+        value: "false"
+      - name: APICAST_RESPONSE_CODES
+        value: "false"
+      - name: APICAST_CONFIGURATION_CACHE
+      - name: REDIS_URL
+      - name: APICAST_MANAGEMENT_API
+        value: status
+      - name: OPENSSL_VERIFY
+        value: "false"
+      - name: APICAST_REPORTING_THREADS
+        value: "0"
+      - name: APICAST_WORKERS
+      image: quay.io/3scale/apicast:master
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /status/live
+          port: management
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: apicast
+      ports:
+      - containerPort: 8080
+        name: proxy
+        protocol: TCP
+      - containerPort: 8090
+        name: management
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /status/ready
+          port: management
+          scheme: HTTP
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000180000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-96zzz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-swcqv
+    nodeName: ocpcluster-cns-0
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000180000
+      seLinuxOptions:
+        level: s0:c13,c12
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - name: default-token-96zzz
+      secret:
+        defaultMode: 420
+        secretName: default-token-96zzz
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:20Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:44Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:20:20Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://2d78dad834df9b09c941034eeb91c83b497c3598a2895a18da0dbf242540fe75
+      image: quay.io/3scale/apicast:master
+      imageID: docker-pullable://quay.io/3scale/apicast@sha256:7a580af9d82a97f30445bd70d93644fc1ed2b5695ac1376e447e1bcf14687c16
+      lastState: {}
+      name: apicast
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-01-23T16:20:24Z
+    hostIP: 10.3.0.7
+    phase: Running
+    podIP: 10.129.4.35
+    qosClass: BestEffort
+    startTime: 2019-01-23T16:20:20Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/build.name: demo-api-1
+      openshift.io/scc: privileged
+    creationTimestamp: 2019-01-23T15:59:13Z
+    labels:
+      openshift.io/build.name: demo-api-1
+    name: demo-api-1-build
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: demo-api-1
+      uid: d3f0dd6e-1f27-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263080"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-api-1-build
+    uid: d3ff8e3d-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    containers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-sti-build
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-api-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-api-1","uid":"d3f0dd6e-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16262973","creationTimestamp":"2019-01-23T15:59:13Z","labels":{"app":"demo-api","buildconfig":"demo-api","openshift.io/build-config.name":"demo-api","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-api","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-api","uid":"d3bbc5b2-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/api"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image change","imageChangeBuild":{"imageID":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"nodejs:10"}}}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-api"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /api
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: sti-build
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/docker.sock
+        name: docker-socket
+      - mountPath: /var/run/crio/crio.sock
+        name: crio-socket
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-8clr7-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-8clr7-pull
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: builder-dockercfg-8clr7
+    initContainers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-git-clone
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-api-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-api-1","uid":"d3f0dd6e-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16262973","creationTimestamp":"2019-01-23T15:59:13Z","labels":{"app":"demo-api","buildconfig":"demo-api","openshift.io/build-config.name":"demo-api","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-api","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-api","uid":"d3bbc5b2-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/api"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image change","imageChangeBuild":{"imageID":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"nodejs:10"}}}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-api"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /api
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-manage-dockerfile
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-api-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-api-1","uid":"d3f0dd6e-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16262973","creationTimestamp":"2019-01-23T15:59:13Z","labels":{"app":"demo-api","buildconfig":"demo-api","openshift.io/build-config.name":"demo-api","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-api","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-api","uid":"d3bbc5b2-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/api"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image change","imageChangeBuild":{"imageID":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"nodejs:10"}}}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-api:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-api"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /api
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    nodeName: ocpcluster-cns-1
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - emptyDir: {}
+      name: buildworkdir
+    - hostPath:
+        path: /var/run/docker.sock
+        type: ""
+      name: docker-socket
+    - hostPath:
+        path: /var/run/crio/crio.sock
+        type: ""
+      name: crio-socket
+    - name: builder-dockercfg-8clr7-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-dockercfg-8clr7-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-token-6vfqp
+      secret:
+        defaultMode: 420
+        secretName: builder-token-6vfqp
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:20Z
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:32Z
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:13Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://b2300ff7f41ca8343d32401c08068a27bb9054c263908407bb99cdc304c15b7c
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: sti-build
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://b2300ff7f41ca8343d32401c08068a27bb9054c263908407bb99cdc304c15b7c
+          exitCode: 0
+          finishedAt: 2019-01-23T15:59:32Z
+          reason: Completed
+          startedAt: 2019-01-23T15:59:21Z
+    hostIP: 10.3.0.4
+    initContainerStatuses:
+    - containerID: docker://8db4c5b87ed2092f4442409d307c6e7d05d256913726b84ce58562d1d86dc546
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: git-clone
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://8db4c5b87ed2092f4442409d307c6e7d05d256913726b84ce58562d1d86dc546
+          exitCode: 0
+          finishedAt: 2019-01-23T15:59:18Z
+          reason: Completed
+          startedAt: 2019-01-23T15:59:15Z
+    - containerID: docker://0676dfc5ebfc7e03cde95b8b92da0f7d79527ba37623b1705a57b39898cf6622
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: manage-dockerfile
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://0676dfc5ebfc7e03cde95b8b92da0f7d79527ba37623b1705a57b39898cf6622
+          exitCode: 0
+          finishedAt: 2019-01-23T15:59:20Z
+          reason: Completed
+          startedAt: 2019-01-23T15:59:20Z
+    phase: Succeeded
+    podIP: 10.131.1.57
+    qosClass: BestEffort
+    startTime: 2019-01-23T15:59:13Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-api
+      openshift.io/deployment.name: demo-api-1
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-01-23T15:59:35Z
+    generateName: demo-api-1-
+    labels:
+      app: demo-api
+      deployment: demo-api-1
+      deploymentconfig: demo-api
+    name: demo-api-1-wbr86
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: demo-api-1
+      uid: df6c2787-1f27-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263127"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-api-1-wbr86
+    uid: e134bf66-1f27-11e9-996a-000d3ab5d4b3
+  spec:
+    containers:
+    - image: docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+      imagePullPolicy: Always
+      name: demo-api
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+        requests:
+          cpu: 100m
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000180000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-96zzz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-swcqv
+    nodeName: ocpcluster-cns-1
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000180000
+      seLinuxOptions:
+        level: s0:c13,c12
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: default-token-96zzz
+      secret:
+        defaultMode: 420
+        secretName: default-token-96zzz
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:35Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:39Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T15:59:35Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://0290d97e8555872e954252495c01797b1250d795efe6f022e343c8f5577e2003
+      image: docker-registry.default.svc:5000/3scalegateway/demo-api:latest
+      imageID: docker-pullable://docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+      lastState: {}
+      name: demo-api
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-01-23T15:59:38Z
+    hostIP: 10.3.0.4
+    phase: Running
+    podIP: 10.131.1.58
+    qosClass: Burstable
+    startTime: 2019-01-23T15:59:35Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/build.name: demo-brands-1
+      openshift.io/scc: privileged
+    creationTimestamp: 2019-01-23T16:00:41Z
+    labels:
+      openshift.io/build.name: demo-brands-1
+    name: demo-brands-1-build
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: demo-brands-1
+      uid: 08765ef0-1f28-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263543"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-brands-1-build
+    uid: 0886eaae-1f28-11e9-9f6b-000d3ab5dd95
+  spec:
+    containers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-sti-build
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-brands-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-brands-1","uid":"08765ef0-1f28-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263431","creationTimestamp":"2019-01-23T16:00:41Z","labels":{"app":"demo-brands","buildconfig":"demo-brands","openshift.io/build-config.name":"demo-brands","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-brands","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-brands","uid":"084c3400-1f28-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/brands"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-brands"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/brands
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: sti-build
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/docker.sock
+        name: docker-socket
+      - mountPath: /var/run/crio/crio.sock
+        name: crio-socket
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-8clr7-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-8clr7-pull
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: builder-dockercfg-8clr7
+    initContainers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-git-clone
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-brands-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-brands-1","uid":"08765ef0-1f28-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263431","creationTimestamp":"2019-01-23T16:00:41Z","labels":{"app":"demo-brands","buildconfig":"demo-brands","openshift.io/build-config.name":"demo-brands","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-brands","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-brands","uid":"084c3400-1f28-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/brands"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-brands"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/brands
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-manage-dockerfile
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-brands-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-brands-1","uid":"08765ef0-1f28-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263431","creationTimestamp":"2019-01-23T16:00:41Z","labels":{"app":"demo-brands","buildconfig":"demo-brands","openshift.io/build-config.name":"demo-brands","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-brands","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-brands","uid":"084c3400-1f28-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/brands"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-brands:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-brands"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/brands
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    nodeName: ocpcluster-cns-1
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - emptyDir: {}
+      name: buildworkdir
+    - hostPath:
+        path: /var/run/docker.sock
+        type: ""
+      name: docker-socket
+    - hostPath:
+        path: /var/run/crio/crio.sock
+        type: ""
+      name: crio-socket
+    - name: builder-dockercfg-8clr7-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-dockercfg-8clr7-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-token-6vfqp
+      secret:
+        defaultMode: 420
+        secretName: builder-token-6vfqp
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:49Z
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:01:06Z
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:41Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://8049cfb8a30cf847720989025f898a26b576c7f62a5d8d632efb031e9a621976
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: sti-build
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://8049cfb8a30cf847720989025f898a26b576c7f62a5d8d632efb031e9a621976
+          exitCode: 0
+          finishedAt: 2019-01-23T16:01:06Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:50Z
+    hostIP: 10.3.0.4
+    initContainerStatuses:
+    - containerID: docker://16e8dc1661aec1606ff4a42bbe9ae1277e0ef6741c44fa2a744e595293523b5b
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: git-clone
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://16e8dc1661aec1606ff4a42bbe9ae1277e0ef6741c44fa2a744e595293523b5b
+          exitCode: 0
+          finishedAt: 2019-01-23T16:00:48Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:44Z
+    - containerID: docker://4396dea085cbb1363458b2bc0bd59d785811124b6dc5df68fa76f5d18ee2fb0b
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: manage-dockerfile
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://4396dea085cbb1363458b2bc0bd59d785811124b6dc5df68fa76f5d18ee2fb0b
+          exitCode: 0
+          finishedAt: 2019-01-23T16:00:49Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:49Z
+    phase: Succeeded
+    podIP: 10.131.1.60
+    qosClass: BestEffort
+    startTime: 2019-01-23T16:00:41Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-brands
+      openshift.io/deployment.name: demo-brands-1
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-01-23T16:01:09Z
+    generateName: demo-brands-1-
+    labels:
+      app: demo-brands
+      deployment: demo-brands-1
+      deploymentconfig: demo-brands
+    name: demo-brands-1-rhj72
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: demo-brands-1
+      uid: 174c9915-1f28-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263593"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-brands-1-rhj72
+    uid: 1938b3bc-1f28-11e9-996a-000d3ab5d4b3
+  spec:
+    containers:
+    - image: docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+      imagePullPolicy: Always
+      name: demo-brands
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+        requests:
+          cpu: 100m
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000180000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-96zzz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-swcqv
+    nodeName: ocpcluster-cns-1
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000180000
+      seLinuxOptions:
+        level: s0:c13,c12
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: default-token-96zzz
+      secret:
+        defaultMode: 420
+        secretName: default-token-96zzz
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:01:09Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:01:12Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:01:09Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://1f26ec5498640779f308513ae09bc30990c313728040a020048769a0f2499609
+      image: docker-registry.default.svc:5000/3scalegateway/demo-brands:latest
+      imageID: docker-pullable://docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+      lastState: {}
+      name: demo-brands
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-01-23T16:01:11Z
+    hostIP: 10.3.0.4
+    phase: Running
+    podIP: 10.131.1.61
+    qosClass: Burstable
+    startTime: 2019-01-23T16:01:09Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/build.name: demo-users-1
+      openshift.io/scc: privileged
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      openshift.io/build.name: demo-users-1
+    name: demo-users-1-build
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: demo-users-1
+      uid: f16f2b62-1f27-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263331"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-users-1-build
+    uid: f181ae0c-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    containers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-sti-build
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-users-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-users-1","uid":"f16f2b62-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263220","creationTimestamp":"2019-01-23T16:00:02Z","labels":{"app":"demo-users","buildconfig":"demo-users","openshift.io/build-config.name":"demo-users","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-users","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-users","uid":"f14ca0a8-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/users"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-users"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/users
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: sti-build
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/docker.sock
+        name: docker-socket
+      - mountPath: /var/run/crio/crio.sock
+        name: crio-socket
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-8clr7-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-8clr7-pull
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: builder-dockercfg-8clr7
+    initContainers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-git-clone
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-users-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-users-1","uid":"f16f2b62-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263220","creationTimestamp":"2019-01-23T16:00:02Z","labels":{"app":"demo-users","buildconfig":"demo-users","openshift.io/build-config.name":"demo-users","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-users","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-users","uid":"f14ca0a8-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/users"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-users"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/users
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-manage-dockerfile
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"demo-users-1","namespace":"3scalegateway","selfLink":"/apis/build.openshift.io/v1/namespaces/3scalegateway/builds/demo-users-1","uid":"f16f2b62-1f27-11e9-9f6b-000d3ab5dd95","resourceVersion":"16263220","creationTimestamp":"2019-01-23T16:00:02Z","labels":{"app":"demo-users","buildconfig":"demo-users","openshift.io/build-config.name":"demo-users","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"demo-users","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"demo-users","uid":"f14ca0a8-1f27-11e9-b8d3-000d3ab5d716","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/CelsoSantos/3scale-demo-api.git","ref":"master"},"contextDir":"/services/users"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/openshift/nodejs@sha256:2d263160313303dba1bb0f9715ed5909cf4fd5a1735cf02ac9b7a4e20c82b46d"},"pullSecret":{"name":"builder-dockercfg-8clr7"}}},"output":{"to":{"kind":"DockerImage","name":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest"},"pushSecret":{"name":"builder-dockercfg-8clr7"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Build configuration change"}]},"status":{"phase":"New","outputDockerImageReference":"docker-registry.default.svc:5000/3scalegateway/demo-users:latest","config":{"kind":"BuildConfig","namespace":"3scalegateway","name":"demo-users"},"output":{}}}
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_URI
+        value: https://github.com/CelsoSantos/3scale-demo-api.git
+      - name: SOURCE_CONTEXT_DIR
+        value: /services/users
+      - name: SOURCE_REF
+        value: master
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6vfqp
+        readOnly: true
+    nodeName: ocpcluster-cns-0
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - emptyDir: {}
+      name: buildworkdir
+    - hostPath:
+        path: /var/run/docker.sock
+        type: ""
+      name: docker-socket
+    - hostPath:
+        path: /var/run/crio/crio.sock
+        type: ""
+      name: crio-socket
+    - name: builder-dockercfg-8clr7-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-dockercfg-8clr7-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-8clr7
+    - name: builder-token-6vfqp
+      secret:
+        defaultMode: 420
+        secretName: builder-token-6vfqp
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:15Z
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:27Z
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:02Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://c2d0edc9e3b87a508e8195f073ed9506b1ef71fce1520c225551966727589532
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: sti-build
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://c2d0edc9e3b87a508e8195f073ed9506b1ef71fce1520c225551966727589532
+          exitCode: 0
+          finishedAt: 2019-01-23T16:00:26Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:16Z
+    hostIP: 10.3.0.7
+    initContainerStatuses:
+    - containerID: docker://3dc0560af03cc669a0d0b4422d8210760bda1507e8078f1486cb4dc58149d70f
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: git-clone
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://3dc0560af03cc669a0d0b4422d8210760bda1507e8078f1486cb4dc58149d70f
+          exitCode: 0
+          finishedAt: 2019-01-23T16:00:14Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:05Z
+    - containerID: docker://c96945e51cbf037e2c7ea1b7cf55c531db494800e7d5084fcbad2cbb0cdf525c
+      image: registry.redhat.io/openshift3/ose-docker-builder:v3.11.16
+      imageID: docker-pullable://registry.redhat.io/openshift3/ose-docker-builder@sha256:13bc494812411a29679b7084c75791fbab85d76eac68ed3f6894e893f50b6772
+      lastState: {}
+      name: manage-dockerfile
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: docker://c96945e51cbf037e2c7ea1b7cf55c531db494800e7d5084fcbad2cbb0cdf525c
+          exitCode: 0
+          finishedAt: 2019-01-23T16:00:15Z
+          reason: Completed
+          startedAt: 2019-01-23T16:00:15Z
+    phase: Succeeded
+    podIP: 10.129.4.27
+    qosClass: BestEffort
+    startTime: 2019-01-23T16:00:02Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-users
+      openshift.io/deployment.name: demo-users-1
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-01-23T16:00:29Z
+    generateName: demo-users-1-
+    labels:
+      app: demo-users
+      deployment: demo-users-1
+      deploymentconfig: demo-users
+    name: demo-users-1-k4wdn
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: demo-users-1
+      uid: ffb75ef7-1f27-11e9-9f6b-000d3ab5dd95
+    resourceVersion: "16263377"
+    selfLink: /api/v1/namespaces/3scalegateway/pods/demo-users-1-k4wdn
+    uid: 0172126a-1f28-11e9-996a-000d3ab5d4b3
+  spec:
+    containers:
+    - image: docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+      imagePullPolicy: Always
+      name: demo-users
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+        requests:
+          cpu: 100m
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000180000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-96zzz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-swcqv
+    nodeName: ocpcluster-cns-0
+    nodeSelector:
+      node-role.kubernetes.io/compute: "true"
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000180000
+      seLinuxOptions:
+        level: s0:c13,c12
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: default-token-96zzz
+      secret:
+        defaultMode: 420
+        secretName: default-token-96zzz
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:29Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:32Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-01-23T16:00:29Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://5f32c15bec1cf102f74f8ddce7ef5033c0361b6443ad2c0fb35cd93081bf993d
+      image: docker-registry.default.svc:5000/3scalegateway/demo-users:latest
+      imageID: docker-pullable://docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+      lastState: {}
+      name: demo-users
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-01-23T16:00:32Z
+    hostIP: 10.3.0.7
+    phase: Running
+    podIP: 10.129.4.28
+    qosClass: Burstable
+    startTime: 2019-01-23T16:00:29Z
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-01-23 16:20:47 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-01-23 16:20:17 +0000 UTC
+      openshift.io/deployer-pod.name: apicast-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: apicast
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "2"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"apicast","namespace":"3scalegateway","selfLink":"/apis/apps.openshift.io/v1/namespaces/3scalegateway/deploymentconfigs/apicast","uid":"c5a2029e-1f2a-11e9-b8d3-000d3ab5d716","resourceVersion":"16267448","generation":1,"creationTimestamp":"2019-01-23T16:20:17Z","labels":{"app":"3scale-gateway"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":2,"revisionHistoryLimit":10,"test":false,"selector":{"deploymentconfig":"apicast"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"3scale-gateway","deploymentconfig":"apicast"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"containers":[{"name":"apicast","image":"quay.io/3scale/apicast:master","ports":[{"name":"proxy","containerPort":8080,"protocol":"TCP"},{"name":"management","containerPort":8090,"protocol":"TCP"}],"env":[{"name":"THREESCALE_PORTAL_ENDPOINT","valueFrom":{"secretKeyRef":{"name":"apicast-configuration-url-secret","key":"password"}}},{"name":"THREESCALE_CONFIG_FILE"},{"name":"THREESCALE_DEPLOYMENT_ENV","value":"production"},{"name":"RESOLVER"},{"name":"APICAST_SERVICES_LIST"},{"name":"APICAST_CONFIGURATION_LOADER","value":"boot"},{"name":"APICAST_LOG_LEVEL","value":"warn"},{"name":"APICAST_PATH_ROUTING","value":"false"},{"name":"APICAST_RESPONSE_CODES","value":"false"},{"name":"APICAST_CONFIGURATION_CACHE"},{"name":"REDIS_URL"},{"name":"APICAST_MANAGEMENT_API","value":"status"},{"name":"OPENSSL_VERIFY","value":"false"},{"name":"APICAST_REPORTING_THREADS","value":"0"},{"name":"APICAST_WORKERS"}],"resources":{},"livenessProbe":{"httpGet":{"path":"/status/live","port":"management","scheme":"HTTP"},"initialDelaySeconds":10,"timeoutSeconds":1,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"readinessProbe":{"httpGet":{"path":"/status/ready","port":"management","scheme":"HTTP"},"initialDelaySeconds":15,"timeoutSeconds":1,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2019-01-23T16:20:17Z
+    generation: 2
+    labels:
+      app: 3scale-gateway
+      openshift.io/deployment-config.name: apicast
+    name: apicast-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: apicast
+      uid: c5a2029e-1f2a-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16267614"
+    selfLink: /api/v1/namespaces/3scalegateway/replicationcontrollers/apicast-1
+    uid: c5ac88ed-1f2a-11e9-9f6b-000d3ab5dd95
+  spec:
+    replicas: 2
+    selector:
+      deployment: apicast-1
+      deploymentconfig: apicast
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: apicast
+          openshift.io/deployment.name: apicast-1
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: 3scale-gateway
+          deployment: apicast-1
+          deploymentconfig: apicast
+      spec:
+        containers:
+        - env:
+          - name: THREESCALE_PORTAL_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: apicast-configuration-url-secret
+          - name: THREESCALE_CONFIG_FILE
+          - name: THREESCALE_DEPLOYMENT_ENV
+            value: production
+          - name: RESOLVER
+          - name: APICAST_SERVICES_LIST
+          - name: APICAST_CONFIGURATION_LOADER
+            value: boot
+          - name: APICAST_LOG_LEVEL
+            value: warn
+          - name: APICAST_PATH_ROUTING
+            value: "false"
+          - name: APICAST_RESPONSE_CODES
+            value: "false"
+          - name: APICAST_CONFIGURATION_CACHE
+          - name: REDIS_URL
+          - name: APICAST_MANAGEMENT_API
+            value: status
+          - name: OPENSSL_VERIFY
+            value: "false"
+          - name: APICAST_REPORTING_THREADS
+            value: "0"
+          - name: APICAST_WORKERS
+          image: quay.io/3scale/apicast:master
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/live
+              port: management
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: apicast
+          ports:
+          - containerPort: 8080
+            name: proxy
+            protocol: TCP
+          - containerPort: 8090
+            name: management
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/ready
+              port: management
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    fullyLabeledReplicas: 2
+    observedGeneration: 2
+    readyReplicas: 2
+    replicas: 2
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-01-23 15:59:39 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-01-23 15:59:32 +0000 UTC
+      openshift.io/deployer-pod.name: demo-api-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-api
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"demo-api","namespace":"3scalegateway","selfLink":"/apis/apps.openshift.io/v1/namespaces/3scalegateway/deploymentconfigs/demo-api","uid":"d3bb1567-1f27-11e9-b8d3-000d3ab5d716","resourceVersion":"16263067","generation":2,"creationTimestamp":"2019-01-23T15:59:12Z","labels":{"app":"demo-api"},"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["demo-api"],"from":{"kind":"ImageStreamTag","namespace":"3scalegateway","name":"demo-api:latest"},"lastTriggeredImage":"docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7"}},{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"deploymentconfig":"demo-api"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"demo-api","deploymentconfig":"demo-api"}},"spec":{"containers":[{"name":"demo-api","image":"docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"500m"},"requests":{"cpu":"100m"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-01-23T15:59:12Z","lastTransitionTime":"2019-01-23T15:59:12Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2019-01-23T15:59:32Z
+    generation: 2
+    labels:
+      app: demo-api
+      openshift.io/deployment-config.name: demo-api
+    name: demo-api-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: demo-api
+      uid: d3bb1567-1f27-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16263134"
+    selfLink: /api/v1/namespaces/3scalegateway/replicationcontrollers/demo-api-1
+    uid: df6c2787-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    replicas: 1
+    selector:
+      deployment: demo-api-1
+      deploymentconfig: demo-api
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: demo-api
+          openshift.io/deployment.name: demo-api-1
+        creationTimestamp: null
+        labels:
+          app: demo-api
+          deployment: demo-api-1
+          deploymentconfig: demo-api
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-api@sha256:05c8ae4cebb60cc41b869ba27f3b55ee472ca630ba94dead21f39fb8815827e7
+          imagePullPolicy: Always
+          name: demo-api
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-01-23 16:01:12 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-01-23 16:01:06 +0000 UTC
+      openshift.io/deployer-pod.name: demo-brands-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-brands
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"demo-brands","namespace":"3scalegateway","selfLink":"/apis/apps.openshift.io/v1/namespaces/3scalegateway/deploymentconfigs/demo-brands","uid":"084a67b0-1f28-11e9-b8d3-000d3ab5d716","resourceVersion":"16263529","generation":2,"creationTimestamp":"2019-01-23T16:00:40Z","labels":{"app":"demo-brands"},"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["demo-brands"],"from":{"kind":"ImageStreamTag","namespace":"3scalegateway","name":"demo-brands:latest"},"lastTriggeredImage":"docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2"}},{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"deploymentconfig":"demo-brands"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"demo-brands","deploymentconfig":"demo-brands"}},"spec":{"containers":[{"name":"demo-brands","image":"docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"500m"},"requests":{"cpu":"100m"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-01-23T16:00:41Z","lastTransitionTime":"2019-01-23T16:00:41Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2019-01-23T16:01:06Z
+    generation: 2
+    labels:
+      app: demo-brands
+      openshift.io/deployment-config.name: demo-brands
+    name: demo-brands-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: demo-brands
+      uid: 084a67b0-1f28-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16263598"
+    selfLink: /api/v1/namespaces/3scalegateway/replicationcontrollers/demo-brands-1
+    uid: 174c9915-1f28-11e9-9f6b-000d3ab5dd95
+  spec:
+    replicas: 1
+    selector:
+      deployment: demo-brands-1
+      deploymentconfig: demo-brands
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: demo-brands
+          openshift.io/deployment.name: demo-brands-1
+        creationTimestamp: null
+        labels:
+          app: demo-brands
+          deployment: demo-brands-1
+          deploymentconfig: demo-brands
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-brands@sha256:da166b518e9449f79f13f1afb7fe00b27bb6aea2864dde4919f963706f30c4b2
+          imagePullPolicy: Always
+          name: demo-brands
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-01-23 16:00:32 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-01-23 16:00:26 +0000 UTC
+      openshift.io/deployer-pod.name: demo-users-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: demo-users
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"demo-users","namespace":"3scalegateway","selfLink":"/apis/apps.openshift.io/v1/namespaces/3scalegateway/deploymentconfigs/demo-users","uid":"f14b7f8d-1f27-11e9-b8d3-000d3ab5d716","resourceVersion":"16263318","generation":2,"creationTimestamp":"2019-01-23T16:00:02Z","labels":{"app":"demo-users"},"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["demo-users"],"from":{"kind":"ImageStreamTag","namespace":"3scalegateway","name":"demo-users:latest"},"lastTriggeredImage":"docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a"}},{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"deploymentconfig":"demo-users"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"demo-users","deploymentconfig":"demo-users"}},"spec":{"containers":[{"name":"demo-users","image":"docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"500m"},"requests":{"cpu":"100m"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-01-23T16:00:02Z","lastTransitionTime":"2019-01-23T16:00:02Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2019-01-23T16:00:26Z
+    generation: 4
+    labels:
+      app: demo-users
+      openshift.io/deployment-config.name: demo-users
+    name: demo-users-1
+    namespace: 3scalegateway
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: demo-users
+      uid: f14b7f8d-1f27-11e9-b8d3-000d3ab5d716
+    resourceVersion: "16264688"
+    selfLink: /api/v1/namespaces/3scalegateway/replicationcontrollers/demo-users-1
+    uid: ffb75ef7-1f27-11e9-9f6b-000d3ab5dd95
+  spec:
+    replicas: 1
+    selector:
+      deployment: demo-users-1
+      deploymentconfig: demo-users
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: demo-users
+          openshift.io/deployment.name: demo-users-1
+        creationTimestamp: null
+        labels:
+          app: demo-users
+          deployment: demo-users-1
+          deploymentconfig: demo-users
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/3scalegateway/demo-users@sha256:7ad6d06337f15b79e625d860770f26dd8044107d69b9b38932ed6888c1f19e6a
+          imagePullPolicy: Always
+          name: demo-users
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: 2019-01-23T16:20:17Z
+    labels:
+      app: 3scale-gateway
+    name: apicast
+    namespace: 3scalegateway
+    resourceVersion: "16267455"
+    selfLink: /api/v1/namespaces/3scalegateway/services/apicast
+    uid: c5bb412c-1f2a-11e9-b8d3-000d3ab5d716
+  spec:
+    clusterIP: 172.30.31.162
+    ports:
+    - name: proxy
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: management
+      port: 8090
+      protocol: TCP
+      targetPort: 8090
+    selector:
+      deploymentconfig: apicast
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T15:59:12Z
+    labels:
+      app: demo-api
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16262966"
+    selfLink: /api/v1/namespaces/3scalegateway/services/demo-api
+    uid: d3c08854-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    clusterIP: 172.30.108.80
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: demo-api
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:40Z
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263424"
+    selfLink: /api/v1/namespaces/3scalegateway/services/demo-brands
+    uid: 084de583-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    clusterIP: 172.30.202.220
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: demo-brands
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16263214"
+    selfLink: /api/v1/namespaces/3scalegateway/services/demo-users
+    uid: f154c49e-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    clusterIP: 172.30.72.26
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: demo-users
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: autoscaling/v1
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      autoscaling.alpha.kubernetes.io/conditions: '[{"type":"AbleToScale","status":"True","lastTransitionTime":"2019-01-23T15:59:42Z","reason":"ReadyForNewScale","message":"the
+        last scale time was sufficiently old as to warrant a new scale"},{"type":"ScalingActive","status":"True","lastTransitionTime":"2019-01-23T16:00:42Z","reason":"ValidMetricFound","message":"the
+        HPA was able to successfully calculate a replica count from cpu resource utilization
+        (percentage of request)"},{"type":"ScalingLimited","status":"True","lastTransitionTime":"2019-01-23T16:46:50Z","reason":"TooFewReplicas","message":"the
+        desired replica count is more than the maximum replica count"}]'
+      autoscaling.alpha.kubernetes.io/current-metrics: '[{"type":"Resource","resource":{"name":"cpu","currentAverageUtilization":0,"currentAverageValue":"0"}}]'
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T15:59:12Z
+    labels:
+      app: demo-api
+    name: demo-api
+    namespace: 3scalegateway
+    resourceVersion: "16272552"
+    selfLink: /apis/autoscaling/v1/namespaces/3scalegateway/horizontalpodautoscalers/demo-api
+    uid: d3bb6d12-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    maxReplicas: 3
+    minReplicas: 1
+    scaleTargetRef:
+      apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: demo-api
+    targetCPUUtilizationPercentage: 50
+  status:
+    currentCPUUtilizationPercentage: 0
+    currentReplicas: 1
+    desiredReplicas: 1
+- apiVersion: autoscaling/v1
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      autoscaling.alpha.kubernetes.io/conditions: '[{"type":"AbleToScale","status":"True","lastTransitionTime":"2019-01-23T16:01:10Z","reason":"ReadyForNewScale","message":"the
+        last scale time was sufficiently old as to warrant a new scale"},{"type":"ScalingActive","status":"True","lastTransitionTime":"2019-01-23T16:02:11Z","reason":"ValidMetricFound","message":"the
+        HPA was able to successfully calculate a replica count from cpu resource utilization
+        (percentage of request)"},{"type":"ScalingLimited","status":"True","lastTransitionTime":"2019-01-23T16:02:41Z","reason":"TooFewReplicas","message":"the
+        desired replica count is increasing faster than the maximum scale rate"}]'
+      autoscaling.alpha.kubernetes.io/current-metrics: '[{"type":"Resource","resource":{"name":"cpu","currentAverageUtilization":0,"currentAverageValue":"0"}}]'
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:40Z
+    labels:
+      app: demo-brands
+    name: demo-brands
+    namespace: 3scalegateway
+    resourceVersion: "16263923"
+    selfLink: /apis/autoscaling/v1/namespaces/3scalegateway/horizontalpodautoscalers/demo-brands
+    uid: 084aaf95-1f28-11e9-b8d3-000d3ab5d716
+  spec:
+    maxReplicas: 5
+    minReplicas: 1
+    scaleTargetRef:
+      apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: demo-brands
+    targetCPUUtilizationPercentage: 25
+  status:
+    currentCPUUtilizationPercentage: 0
+    currentReplicas: 1
+    desiredReplicas: 1
+- apiVersion: autoscaling/v1
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      autoscaling.alpha.kubernetes.io/conditions: '[{"type":"AbleToScale","status":"True","lastTransitionTime":"2019-01-23T16:11:39Z","reason":"ReadyForNewScale","message":"the
+        last scale time was sufficiently old as to warrant a new scale"},{"type":"ScalingActive","status":"True","lastTransitionTime":"2019-01-23T16:01:32Z","reason":"ValidMetricFound","message":"the
+        HPA was able to successfully calculate a replica count from cpu resource utilization
+        (percentage of request)"},{"type":"ScalingLimited","status":"True","lastTransitionTime":"2019-01-23T16:47:50Z","reason":"TooFewReplicas","message":"the
+        desired replica count is increasing faster than the maximum scale rate"}]'
+      autoscaling.alpha.kubernetes.io/current-metrics: '[{"type":"Resource","resource":{"name":"cpu","currentAverageUtilization":0,"currentAverageValue":"0"}}]'
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: 2019-01-23T16:00:02Z
+    labels:
+      app: demo-users
+    name: demo-users
+    namespace: 3scalegateway
+    resourceVersion: "16272743"
+    selfLink: /apis/autoscaling/v1/namespaces/3scalegateway/horizontalpodautoscalers/demo-users
+    uid: f14bd277-1f27-11e9-b8d3-000d3ab5d716
+  spec:
+    maxReplicas: 5
+    minReplicas: 1
+    scaleTargetRef:
+      apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: demo-users
+    targetCPUUtilizationPercentage: 25
+  status:
+    currentCPUUtilizationPercentage: 0
+    currentReplicas: 1
+    desiredReplicas: 1
+    lastScaleTime: 2019-01-23T16:06:34Z
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
